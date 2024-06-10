@@ -331,7 +331,7 @@
             <input type="text" id="search-input" placeholder="Buscar laptops...">
             <button type="button" onclick="searchLaptops()">Buscar</button>
             <div class="cart-icon" onclick="toggleCart()">
-                <img src="C:/xampp/htdocs/proyecto/pag1-principal/logocarrito.jpg" alt="Carrito">
+               <img src="logocarrito.jpg" alt="Carrito">
                 <span class="cart-count" id="cart-count">0</span>
             </div>
         </div>
@@ -360,7 +360,7 @@
             <!-- Laptops will be displayed here -->
         </div>
         <div class="back-button">
-<a href="C:/xampp/htdocs/proyecto/pag1.html">Volver a la página principal</a>
+<a href="index.html">Volver a la página principal</a>
         </div>
     </div>
 
@@ -376,79 +376,112 @@
     <script>
          let laptops = [
             {
-                name: 'ASUS ROG STRIX',
-                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
-                price: 1320.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+                name: 'ACER Victus 15 ',
+                description: 'ACER Victus 15 Laptop para juegos de 15.6 pulgadas FHD IPS 144Hz AMD 7000 Ryzen 5 7535HS Beats i7-11800H - GeForce RTX 2050 4GB retroiluminado gráfico USB',
+                price: 594.99,
+                image: 'GAMING/GAMING1.png'
+            },
+			{
+                name: 'ACER ESTUDIANTES',
+                description: 'ACER Portátil Essential 14 FHD para todos los días • Microsoft Office Suite gratuita incluida • Teclado iluminado • 16 GB RAM • SSD de 512 GB (PCIe de 256 GB y P500 externo de 250 GB) • Procesador Intel',
+                price: 499.99,
+                image: 'ESTUDIANTES/ESTUDIANTES3.png'
+            },
+			{
+                name: 'ACER Victus',
+                description: 'ACER - Computadora portátil para juegos Victus Full HD 144Hz de 15.6" - Intel Core i5-13420H - Memoria de 8 GB - NVIDIA GeForce RTX 3050-512GB SSD – Azul',
+                price: 639.00,
+                image: 'GAMING/GAMING4.png'
+            },	
+			{
+                name: 'ACER ESTUDIANTES ',
+                description: 'ACER Laptop Chromebook de 14 pulgadas para estudiantes y negocios, laptop Chromebook HD, Intel Celeron N4120, 16 GB de RAM, 192 GB de almacenamiento, 64 GB eMMC+5ave 128 GB de memoria flash, Wi-Fi',
+                price: 279.99,
+                image: 'HP/HP5.png'
             },
             {
-                name: 'ASUS ROG STRIX',
-                description: 'RYZEN 7 - 5800HX 16GB RAM 1TB SSD RTX 3050TI 15.6"',
-                price: 1080.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS1.jpg'
-            },
+                name: 'ACER DE NEGOCIOS',
+                description: 'ACER Portátil de negocios 17, pantalla HD+ de 17.3", procesador Intel Core i3-1125G4 de 11ª generación, 32 GB de RAM, SSD de 1 TB, Wi-Fi, HDMI, cámara web, Windows 11 Pro, color plateado',
+                price: 503.99,
+                image: 'PROFESIONAL/PROFESIONAL.png'
+            },			
 			{
-                name: 'agg',
-                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
-                price: 1320.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
-            },
-			{
-                name: 'agg',
-                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
-                price: 1320.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
-            },
-			{
-                name: 'agg',
-                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
-                price: 1320.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
-            },
-			{
-                name: 'agg',
-                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
-                price: 1320.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
-            },
-        
-		{
-                name: 'ASUS ROG STRIX',
-                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
-                price: 1320.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
-            },
-            {
-                name: 'ASUS ROG STRIX',
-                description: 'RYZEN 7 - 5800HX 16GB RAM 1TB SSD RTX 3050TI 15.6"',
-                price: 1080.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS1.jpg'
-            },
-			{
-                name: 'agg',
-                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
-                price: 1320.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
-            },
-			{
-                name: 'agg',
-                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
-                price: 1320.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+                name: 'Victus by ACER 15 ',
+                description: 'Victus by ACER 15 Laptop para juegos, NVIDIA GeForce RTX 3050, Intel Core i5-12500H de 12ª generación, 8 GB de RAM, SSD de 512 GB, pantalla Full HD, Windows 11 Home, teclado retroiluminado, térmicas',
+                price: 683.00,
+                image: 'GAMING/GAMING2.png'
             },
 						
 			{
-                name: 'agg',
-                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
-                price: 1320.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+                name: 'ACER Victus ',
+                description: 'ACER Victus Laptop de 15.6 pulgadas, pantalla FHD de 144 Hz, Intel Core i5-12450H, 8 GB de RAM, SSD de 512 GB, GPU NVIDIA GeForce RTX 2050 -4 GB dedicado, Windows 11 Home, 15-fa1029nr -2024',
+                price: 750.00,
+                image: 'GAMING/GAMING3.png'
+            },	
+						{
+                name: 'ACER EMPRESARIAL ',
+                description: 'ACER Laptop HD antirreflejo de 15.6", procesador Intel Quad-Core, 16 GB de RAM, 128 GB SSD+ 128 GB de almacenamiento USB JVQ, Office 365 1 año, hasta 11 horas de batería larga, Win11 S, rojo escarlata',
+                price: 329.00,
+                image: 'PROFESIONAL/PROFESIONAL3.png'
+            },
+            {
+                name: 'ACER Victus 15 ',
+                description: 'RYZEN 7 - 5800HX 16GB RAM 1TB SSD RTX 3050TI 15.6"',
+                price: 729.98,
+                image: 'GAMING/GAMING5.png'
             },
 			{
-                name: 'agg',
-                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
-                price: 1320.00,
-                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+                name: 'ACER Victus 15 ',
+                description: 'ACER Victus 15 Laptop para juegos de 15.6 pulgadas FHD IPS 144Hz AMD 7000 Ryzen 5 7535HS Beats i7-11800H - GeForce RTX 2050 4GB retroiluminado gráfico USB',
+                price: 594.99,
+                image: 'GAMING/GAMING1.png'
+            },			
+            {
+                name: 'ACER Chromebook ',
+                description: 'ACER Chromebook insignia más reciente, pantalla HD de 11.6 pulgadas (1366 x 768), procesador Intel Celeron N3350, 4 GB LPDDR2, 32 GB eMMC, Chrome OS, HD Graphics 500, 11A-NB0013DX, gris ceniza',
+                price: 185.00,
+                image: 'HP/HP6.png'
             },
+			{
+                name: 'ACER EMPRESARIA',
+                description: 'ACER Computadora portátil empresarial, pantalla táctil HD de 15.6", procesador Intel Core i3-1115G4 (hasta 4.10 GHz), 16 GB de RAM, SSD de 1 TB, duración de la batería de 11 horas, Micro-Edge, pantalla',
+                price: 422.99,
+                image: 'PROFESIONAL/PROFESIONAL5.png'
+            },  
+			{
+                name: 'ACER Laptop Chromebook ',
+                description: 'ACER Laptop Chromebook de 14 pulgadas para estudiantes y negocios, laptop Chromebook HD, Intel Celeron N4120, 16 GB de RAM, 192 GB de almacenamiento, 64 GB eMMC+5ave 128 GB de memoria flash, Wi-Fi',
+                price: 279.99,
+                image: 'HP/HP5.png'
+            },
+			{
+                name: 'ACER Chromebook ',
+                description: 'ACER Chromebook 15 HD de 15.6 pulgadas (Intel Pentium N6000, 8 GB de RAM, 128 GB de almacenamiento (64 GB eMMc + tarjeta SD de 64 GB), gráficos UHD, KB numérico, portátil para el investigadores o escritores ',
+                price: 299.98,
+                image: 'HP/HP4.png'
+            },
+			{
+                name: 'ACER Laptop Chromebook',
+                description: 'ACER Laptop Chromebook 14, Intel Celeron N4120, 4 GB de RAM, 64 GB eMMC, pantalla HD de 14 pulgadas, Chrome OS, diseño delgado, gráficos 4K, batería de larga duración, teclado gris ceniza ',
+                price: 199.96,
+                image: 'HP/HP3.png'
+            },
+			{
+                name: 'ACER Laptop Chromebook',
+                description: 'ACER Chromebook prémium de 15.6 HD, procesador Intel Celeron N de 3.7 GHz, velocidad turbo de 8 GB, SSD de 64 GB, WiFi ultrarrápido de hasta 1700 Mbps, Chrome OS, Arctic Sliver',
+                price: 1320.00,
+                image: 'HP/HP2.png'
+            },
+        
+		{
+                name: 'ACER Laptop Chromebook',
+                description: 'Pantalla de 14 pulgadas Procesador Intel Celeron N4120  8 GB de RAM  128 GB eMMC  Gráficos Intel UHD 600  WiFi  Bluetooth  Teclado',
+                price: 239.95,
+                image: 'HP/HP1.png'
+            },
+
+
+
         ];
 
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
