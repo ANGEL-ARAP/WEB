@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPORTADORA JARMA - Tienda de Laptops</title>
+    <style>
+        /* Estilos existentes */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #181817;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #EB984E;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            max-width: 300px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 84px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        .search-container button {
+            background-color: white;
+            color: #9B1313;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .search-container button:hover {
+            background-color: #f4f4f4;
+        }
+
+        .cart-icon {
+            position: relative;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            width: 40px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #fff;
+            color: #9B1313;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 140px;
+            left: 0;
+            width: 200px;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+		 .sidebar {
+            background-color: #A8E2D2;
+            padding: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 140px;
+            left: 0;
+            width: 200px;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            font-size: 30px;
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar ul li button {
+            background-color: #CE7226;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .sidebar ul li button:hover {
+            background-color: #800f0f;
+        }
+
+        .container {
+            margin-left: 230px;
+            padding: 30px;
+        }
+
+        .laptop-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+        }
+
+        .laptop-item {
+            background-color: white;
+            padding: 90px;
+            min-width: 80px;
+            border-radius: 118px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .laptop-item img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .laptop-item h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .laptop-item p {
+            margin: 5px 0;
+        }
+
+        .laptop-item .price {
+            color: #9B1313;
+            font-weight: bold;
+        }
+
+        .laptop-item button {
+            background-color: #9B1313;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .laptop-item button:hover {
+            background-color: #800f0f;
+        }
+
+        .cart-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            z-index: 1000;
+        }
+
+        .cart-container h2 {
+            margin-top: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-item img {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+
+        .cart-item h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .cart-item p {
+            margin: 5px 0;
+        }
+
+        .cart-item .price {
+            color: #9B1313;
+            font-weight: bold;
+        }
+
+        .cart-item .quantity-control {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .cart-item .quantity-control button {
+            background-color: #9B1313;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+
+        .cart-item .quantity-control button:hover {
+            background-color: #800f0f;
+        }
+
+        .cart-item .quantity {
+            font-size: 18px;
+        }
+
+        .cart-item .remove-button {
+            background-color: #ff4c4c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 20px;
+        }
+
+        .cart-item .remove-button:hover {
+            background-color: #e43e3e;
+        }
+
+        .cart-footer {
+            text-align: right;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .cart-footer .subtotal {
+            font-weight: bold;
+        }
+
+        .cart-footer button {
+            background-color: #9B1313;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .cart-footer button:hover {
+            background-color: #800f0f;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .back-button a {
+            background-color: #9B1313;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .back-button a:hover {
+            background-color: #800f0f;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+       <img src="Logo.png" alt="Logo de IMPORTADORA JARMA">
+        <h1> LAPTOPS - ESCRITORES </h1>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Buscar laptops...">
+            <button type="button" onclick="searchLaptops()">Buscar</button>
+            <div class="cart-icon" onclick="toggleCart()">
+                <img src="C:/xampp/htdocs/proyecto/pag1-principal/logocarrito.jpg" alt="Carrito">
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+   <div class="sidebar">
+        <h2>CATEGORIAS</h2>
+        <ul>
+            <li><button type="button"><a href="GAMING.html" style="color: white; text-decoration: none;">Gaming</a></button></li>
+			<li><button type="button"><a href="PROFESIONAL.html" style="color: white; text-decoration: none;">Profesional</a></button></li>
+			<li><button type="button"><a href="ESTUDIANTES.html" style="color: white; text-decoration: none;">Estudiantes</a></button></li>
+			<li><button type="button"><a href="ESCRITORES.html" style="color: white; text-decoration: none;">Escritores</a></button></li>
+           </ul>
+        <h2>MARCAS</h2>
+        <ul>
+            <li><button type="button"><a href="HP.html" style="color: white; text-decoration: none;">HP</a></button></li>
+            <li><button type="button"><a href="DELL.html" style="color: white; text-decoration: none;">DELL</a></button></li>
+            <li><button type="button"><a href="ACER.html" style="color: white; text-decoration: none;">ACER</a></button></li>
+            <li><button type="button"><a href="ASUS.html" style="color: white; text-decoration: none;">ASUS</a></button></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="laptop-slider" id="laptop-slider">
+            <!-- Laptops will be displayed here -->
+        </div>
+        <div class="back-button">
+             <a href="C:/xampp/htdocs/proyecto/pag1.html">Volver a la página principal</a>
+        </div>
+    </div>
+
+    <div class="cart-container" id="cart-container">
+        <h2>Carrito de Compras</h2>
+        <div id="cart-items"></div>
+        <div class="cart-footer">
+            <p class="subtotal">Subtotal: $<span id="cart-subtotal">0.00</span></p>
+            <button type="button" onclick="proceedToCheckout()">Proceder al Pago</button>
+        </div>
+    </div>
+
+    <script>
+         let laptops = [
+            {
+                name: 'ASUS ROG STRIX',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+            {
+                name: 'ASUS ROG STRIX',
+                description: 'RYZEN 7 - 5800HX 16GB RAM 1TB SSD RTX 3050TI 15.6"',
+                price: 1080.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS1.jpg'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+        
+		{
+                name: 'ASUS ROG STRIX',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+            {
+                name: 'ASUS ROG STRIX',
+                description: 'RYZEN 7 - 5800HX 16GB RAM 1TB SSD RTX 3050TI 15.6"',
+                price: 1080.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS1.jpg'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+						
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function toggleCart() {
+            const cartContainer = document.getElementById('cart-container');
+            if (cartContainer.style.display === 'none' || cartContainer.style.display === '') {
+                cartContainer.style.display = 'block';
+                displayCartItems();
+            } else {
+                cartContainer.style.display = 'none';
+            }
+        }
+
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+
+                const itemImage = document.createElement('img');
+                itemImage.src = item.image;
+                cartItem.appendChild(itemImage);
+
+                const itemDetails = document.createElement('div');
+                itemDetails.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <p class="price">$${item.price.toFixed(2)}</p>
+                    <div class="quantity-control">
+                        <button onclick="decreaseQuantity('${item.name}')">-</button>
+                        <span class="quantity">${item.quantity}</span>
+                        <button onclick="increaseQuantity('${item.name}')">+</button>
+                    </div>
+                    <button class="remove-button" onclick="removeFromCart('${item.name}')">Eliminar</button>
+                `;
+                cartItem.appendChild(itemDetails);
+
+                cartItemsContainer.appendChild(cartItem);
+                subtotal += item.price * item.quantity;
+            });
+
+            document.getElementById('cart-subtotal').textContent = subtotal.toFixed(2);
+        }
+
+        function increaseQuantity(name) {
+            const item = cart.find(item => item.name === name);
+            item.quantity += 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+            updateCartCount();
+        }
+
+        function decreaseQuantity(name) {
+            const item = cart.find(item => item.name === name);
+            if (item.quantity > 1) {
+                item.quantity -= 1;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCartItems();
+                updateCartCount();
+            }
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+            updateCartCount();
+        }
+
+        function proceedToCheckout() {
+            window.location.href = 'C:/xampp/htdocs/proyecto/checkout.html';
+        }
+
+        function searchLaptops() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const filteredLaptops = laptops.filter(laptop => laptop.name.toLowerCase().includes(searchTerm));
+
+            const laptopSlider = document.getElementById('laptop-slider');
+            laptopSlider.innerHTML = '';
+
+            filteredLaptops.forEach(laptop => {
+                const laptopItem = document.createElement('div');
+                laptopItem.className = 'laptop-item';
+
+                laptopItem.innerHTML = `
+                    <img src="${laptop.image}" alt="${laptop.name}">
+                    <h2>${laptop.name}</h2>
+                    <p>${laptop.description}</p>
+                    <p class="price">$${laptop.price.toFixed(2)}</p>
+                    <button type="button" onclick="addToCart('${laptop.name}', ${laptop.price}, '${laptop.image}')">Agregar al Carrito</button>
+                `;
+
+                laptopSlider.appendChild(laptopItem);
+            });
+        }
+
+        // Initial load
+        updateCartCount();
+        searchLaptops(); // Display all laptops initially
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Laptops </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000
+;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #9B1313;
+        }
+
+        form p {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #000080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #800f0f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Tienda de Laptops</h1>
+        <form action="conectarbasedatos.php" method="post">
+            <p>Código: <input type="number" name="codusu" required /></p>
+            <p>Nombre: <input type="text" name="nomusu" required /></p>
+            <p>Contraseña: <input type="password" name="pasusu" required /></p>
+            <p>Correo: <input type="email" name="correousu" required /></p>
+            <p>
+                <input type="submit" value="Guardar Datos" />
+                <input type="reset" value="Limpiar Datos" />
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>

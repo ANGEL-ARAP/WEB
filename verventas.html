@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas - IMPORTADORA JARMA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4D101D;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .sales-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .sales-container h2 {
+            margin-top: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sales-list {
+            margin-top: 20px;
+        }
+
+        .sales-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sales-list th, .sales-list td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .sales-list th {
+            background-color: #f2f2f2;
+        }
+
+        .logout-button {
+            background-color: #9B1313;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #800f0f;
+        }
+    </style>
+</head>
+<body>
+    <div class="sales-container">
+        <h2>
+            Ventas de Jarma
+            <button class="logout-button" onclick="logout()">Cerrar Sesión</button>
+        </h2>
+        <div class="sales-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="sales-table-body">
+                    <!-- Las ventas se añadirán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = 'iniciocomprobante.html';
+        }
+
+        function loadSales() {
+            const sales = JSON.parse(localStorage.getItem('sales')) || [];
+            const salesTableBody = document.getElementById('sales-table-body');
+            salesTableBody.innerHTML = '';
+
+            sales.forEach((sale, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${sale.receiptDate}</td>
+                    <td>${sale.name}</td>
+                    <td>${sale.address}, ${sale.mainStreet}, ${sale.province}</td>
+                    <td><button onclick="printReceipt(${index})">Imprimir</button></td>
+                `;
+                salesTableBody.appendChild(row);
+            });
+        }
+
+        function printReceipt(index) {
+            const sales = JSON.parse(localStorage.getItem('sales')) || [];
+            const sale = sales[index];
+
+            const receiptWindow = window.open('', 'PRINT', 'height=600,width=800');
+            receiptWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Comprobante de Compra</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; }
+                            .receipt-container { width: 100%; max-width: 600px; margin: auto; padding: 20px; }
+                            .receipt-table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+                            .receipt-table th, .receipt-table td { border: 1px solid #ddd; padding: 8px; }
+                            .receipt-total { text-align: right; margin-top: 20px; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="receipt-container">
+                            <h2>Comprobante de Compra</h2>
+                            <p><strong>IMPORTADORA JARMA</strong></p>
+                            <p><strong>Orden de Compra</strong></p>
+                            <div style="display: flex; justify-content: space-between;">
+                                <p><strong>Nombre:</strong> ${sale.name}</p>
+                                <p><strong>Fecha de Compra:</strong> ${sale.receiptDate}</p>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <p><strong>Dirección:</strong> ${sale.address}, ${sale.mainStreet}, ${sale.province}</p>
+                                <p><strong>Teléfono:</strong> ${sale.phone}</p>
+                            </div>
+                            <table class="receipt-table">
+                                <thead>
+                                    <tr>
+                                        <th>Artículo</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio Unitario</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${sale.cart.map(item => `
+                                        <tr>
+                                            <td>${item.name}</td>
+                                            <td>${item.quantity}</td>
+                                            <td>$${item.price.toFixed(2)}</td>
+                                            <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                            <div class="receipt-total">
+                                <p><strong>Subtotal:</strong> $${sale.subtotal.toFixed(2)}</p>
+                                <p><strong>IVA (15%):</strong> $${sale.iva.toFixed(2)}</p>
+                                <p><strong>Total:</strong> $${sale.total.toFixed(2)}</p>
+                            </div>
+                            <p style="text-align: center; font-weight: bold;">¡Gracias por su compra!</p>
+                        </div>
+                    </body>
+                </html>
+            `);
+            receiptWindow.document.close();
+            receiptWindow.print();
+        }
+
+        window.onload = loadSales;
+    </script>
+</body>
+</html>

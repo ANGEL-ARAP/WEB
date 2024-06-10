@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPORTADORA JARMA - Tienda de Laptops</title>
+    <style>
+        /* Estilos existentes */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #040506;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #819654;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            max-width: 300px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 84px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        .search-container button {
+            background-color: white;
+            color: #9B1313;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .search-container button:hover {
+            background-color: #f4f4f4;
+        }
+
+        .cart-icon {
+            position: relative;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            width: 40px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #fff;
+            color: #9B1313;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 140px;
+            left: 0;
+            width: 200px;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+		 .sidebar {
+            background-color: #F4EE9E;
+            padding: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 140px;
+            left: 0;
+            width: 200px;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            font-size: 30px;
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar ul li button {
+            background-color: #040506;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .sidebar ul li button:hover {
+            background-color: #800f0f;
+        }
+
+        .container {
+            margin-left: 230px;
+            padding: 30px;
+        }
+
+        .laptop-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+        }
+
+        .laptop-item {
+            background-color: white;
+            padding: 90px;
+            min-width: 80px;
+            border-radius: 118px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .laptop-item img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .laptop-item h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .laptop-item p {
+            margin: 5px 0;
+        }
+
+        .laptop-item .price {
+            color: #9B1313;
+            font-weight: bold;
+        }
+
+        .laptop-item button {
+            background-color: #9B1313;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .laptop-item button:hover {
+            background-color: #800f0f;
+        }
+
+        .cart-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            z-index: 1000;
+        }
+
+        .cart-container h2 {
+            margin-top: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-item img {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+
+        .cart-item h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .cart-item p {
+            margin: 5px 0;
+        }
+
+        .cart-item .price {
+            color: #9B1313;
+            font-weight: bold;
+        }
+
+        .cart-item .quantity-control {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .cart-item .quantity-control button {
+            background-color: #9B1313;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+
+        .cart-item .quantity-control button:hover {
+            background-color: #800f0f;
+        }
+
+        .cart-item .quantity {
+            font-size: 18px;
+        }
+
+        .cart-item .remove-button {
+            background-color: #ff4c4c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 20px;
+        }
+
+        .cart-item .remove-button:hover {
+            background-color: #e43e3e;
+        }
+
+        .cart-footer {
+            text-align: right;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .cart-footer .subtotal {
+            font-weight: bold;
+        }
+
+        .cart-footer button {
+            background-color: #9B1313;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .cart-footer button:hover {
+            background-color: #800f0f;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .back-button a {
+            background-color: #9B1313;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .back-button a:hover {
+            background-color: #800f0f;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+       <img src="Logo.png" alt="Logo de IMPORTADORA JARMA">
+        <h1> LAPTOPS - GAMING </h1>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Buscar laptops...">
+            <button type="button" onclick="searchLaptops()">Buscar</button>
+            <div class="cart-icon" onclick="toggleCart()">
+                <img src="logocarrito.jpg" alt="Carrito">
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+   <div class="sidebar">
+        <h2>CATEGORIAS</h2>
+        <ul>
+             <li><button type="button"><a href="GAMING.html" style="color: white; text-decoration: none;">Gaming</a></button></li>
+			<li><button type="button"><a href="PROFESIONAL.html" style="color: white; text-decoration: none;">Profesional</a></button></li>
+			<li><button type="button"><a href="ESTUDIANTES.html" style="color: white; text-decoration: none;">Estudiantes</a></button></li>
+			<li><button type="button"><a href="ESCRITORES.html" style="color: white; text-decoration: none;">Escritores</a></button></li>
+           </ul>
+        <h2>MARCAS</h2>
+        <ul>
+            <li><button type="button"><a href="HP.html" style="color: white; text-decoration: none;">HP</a></button></li>
+            <li><button type="button"><a href="DELL.html" style="color: white; text-decoration: none;">DELL</a></button></li>
+            <li><button type="button"><a href="ACER.html" style="color: white; text-decoration: none;">ACER</a></button></li>
+            <li><button type="button"><a href="ASUS.html" style="color: white; text-decoration: none;">ASUS</a></button></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="laptop-slider" id="laptop-slider">
+            <!-- Laptops will be displayed here -->
+        </div>
+        <div class="back-button">
+             <a href="C:/xampp/htdocs/proyecto/pag1.html">Volver a la página principal</a>
+        </div>
+    </div>
+
+    <div class="cart-container" id="cart-container">
+        <h2>Carrito de Compras</h2>
+        <div id="cart-items"></div>
+        <div class="cart-footer">
+            <p class="subtotal">Subtotal: $<span id="cart-subtotal">0.00</span></p>
+            <button type="button" onclick="proceedToCheckout()">Proceder al Pago</button>
+        </div>
+    </div>
+
+    <script>
+         let laptops = [
+            {
+                name: 'HP Victus 15 ',
+                description: 'HP Victus 15 Laptop para juegos de 15.6 pulgadas FHD IPS 144Hz AMD 7000 Ryzen 5 7535HS Beats i7-11800H - GeForce RTX 2050 4GB retroiluminado gráfico USB',
+                price: 594.99,
+                image: 'GAMING/GAMING1.png'
+            },
+			{
+                name: 'HP Victus',
+                description: 'HP - Computadora portátil para juegos Victus Full HD 144Hz de 15.6" - Intel Core i5-13420H - Memoria de 8 GB - NVIDIA GeForce RTX 3050-512GB SSD – Azul',
+                price: 639.00,
+                image: 'GAMING/GAMING4.png'
+            },			
+			{
+                name: 'Victus by HP 15 ',
+                description: 'Victus by HP 15 Laptop para juegos, NVIDIA GeForce RTX 3050, Intel Core i5-12500H de 12ª generación, 8 GB de RAM, SSD de 512 GB, pantalla Full HD, Windows 11 Home, teclado retroiluminado, térmicas',
+                price: 683.00,
+                image: 'GAMING/GAMING2.png'
+            },
+						
+			{
+                name: 'HP Victus ',
+                description: 'HP Victus Laptop de 15.6 pulgadas, pantalla FHD de 144 Hz, Intel Core i5-12450H, 8 GB de RAM, SSD de 512 GB, GPU NVIDIA GeForce RTX 2050 -4 GB dedicado, Windows 11 Home, 15-fa1029nr -2024',
+                price: 750.00,
+                image: 'GAMING/GAMING3.png'
+            },	
+            {
+                name: 'HP Victus 15 ',
+                description: 'RYZEN 7 - 5800HX 16GB RAM 1TB SSD RTX 3050TI 15.6"',
+                price: 729.98,
+                image: 'GAMING/GAMING5.png'
+            },
+            {
+                name: 'HP Victus ',
+                description: 'HP Victus - Laptop para juegos, pantalla FHD IPS de 15.6 pulgadas de 144 Hz, AMD 6-Core Ryzen 5 7535HS (Beat i7-11600H), GeForce RTX 2050, 32GB DDR5, 2TB',
+                price: 774.00,
+                image: 'GAMING/GAMING6.png'
+            },
+			{
+                name: 'HP Portátil Victus 15',
+                description: 'HP Portátil Victus 15, pantalla FHD IPS de 144 Hz, tiempo de respuesta de 9 ms, Intel Core i5-13500H de 13ª generación, 16 GB de RAM, SSD de 512 GB, GPU.',
+                price: 949.99,
+                image: 'GAMING/GAMING7.png'
+            },
+			{
+                name: 'HP Victus ',
+                description: 'HP Victus - Laptop para juegos FHD 144Hz de 15.6 pulgadas, procesador Intel 8-Core i5-13420H, NVIDIA GeForce RTX 3050, 16GB RAM 512GB SSD, teclado',
+                price: 769.00,
+                image: 'GAMING/GAMING8.png'
+            },
+			{
+                name: 'HP Victus 15 ',
+                description: 'HP Victus 15 Laptop para juegos (15.6 pulgadas FHD 144Hz IPS, AMD Ryzen 5 7535HS, 32 GB DDR5 RAM, 1 TB SSD, GeForce RTX 2050 4GB, (8-Core Beat i7-11800H)) retroiluminada, Wi-Fi 6, cámara web, Win 11',
+                price: 729.98,
+                image: 'GAMING/GAMING9.png'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+        
+		{
+                name: 'ASUS ROG STRIX',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+            {
+                name: 'ASUS ROG STRIX',
+                description: 'RYZEN 7 - 5800HX 16GB RAM 1TB SSD RTX 3050TI 15.6"',
+                price: 1080.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS1.jpg'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+						
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+			{
+                name: 'agg',
+                description: 'RYZEN 9 - 5900, 32GB RAM, 1TB SSD , T.VIDEO 12 GB, GAMING 15.6"',
+                price: 1320.00,
+                image: 'C:/xampp/htdocs/proyecto/ASUS/ASUS.jpg'
+            },
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function toggleCart() {
+            const cartContainer = document.getElementById('cart-container');
+            if (cartContainer.style.display === 'none' || cartContainer.style.display === '') {
+                cartContainer.style.display = 'block';
+                displayCartItems();
+            } else {
+                cartContainer.style.display = 'none';
+            }
+        }
+
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+
+                const itemImage = document.createElement('img');
+                itemImage.src = item.image;
+                cartItem.appendChild(itemImage);
+
+                const itemDetails = document.createElement('div');
+                itemDetails.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <p class="price">$${item.price.toFixed(2)}</p>
+                    <div class="quantity-control">
+                        <button onclick="decreaseQuantity('${item.name}')">-</button>
+                        <span class="quantity">${item.quantity}</span>
+                        <button onclick="increaseQuantity('${item.name}')">+</button>
+                    </div>
+                    <button class="remove-button" onclick="removeFromCart('${item.name}')">Eliminar</button>
+                `;
+                cartItem.appendChild(itemDetails);
+
+                cartItemsContainer.appendChild(cartItem);
+                subtotal += item.price * item.quantity;
+            });
+
+            document.getElementById('cart-subtotal').textContent = subtotal.toFixed(2);
+        }
+
+        function increaseQuantity(name) {
+            const item = cart.find(item => item.name === name);
+            item.quantity += 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+            updateCartCount();
+        }
+
+        function decreaseQuantity(name) {
+            const item = cart.find(item => item.name === name);
+            if (item.quantity > 1) {
+                item.quantity -= 1;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCartItems();
+                updateCartCount();
+            }
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+            updateCartCount();
+        }
+
+        function proceedToCheckout() {
+            window.location.href = 'C:/xampp/htdocs/proyecto/checkout.html';
+        }
+
+        function searchLaptops() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const filteredLaptops = laptops.filter(laptop => laptop.name.toLowerCase().includes(searchTerm));
+
+            const laptopSlider = document.getElementById('laptop-slider');
+            laptopSlider.innerHTML = '';
+
+            filteredLaptops.forEach(laptop => {
+                const laptopItem = document.createElement('div');
+                laptopItem.className = 'laptop-item';
+
+                laptopItem.innerHTML = `
+                    <img src="${laptop.image}" alt="${laptop.name}">
+                    <h2>${laptop.name}</h2>
+                    <p>${laptop.description}</p>
+                    <p class="price">$${laptop.price.toFixed(2)}</p>
+                    <button type="button" onclick="addToCart('${laptop.name}', ${laptop.price}, '${laptop.image}')">Agregar al Carrito</button>
+                `;
+
+                laptopSlider.appendChild(laptopItem);
+            });
+        }
+
+        // Initial load
+        updateCartCount();
+        searchLaptops(); // Display all laptops initially
+    </script>
+</body>
+</html>
