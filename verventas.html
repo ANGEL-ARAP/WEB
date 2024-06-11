@@ -7,7 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #4D101D;
+             background: url('http://localhost/proyecto/fondo3.jpg') no-repeat center center fixed; /* Ruta correcta a tu imagen de fondo */
+            background-size: cover;
             margin: 0;
             padding: 0;
             display: flex;
@@ -63,6 +64,37 @@
         .logout-button:hover {
             background-color: #800f0f;
         }
+
+        .print-button {
+            background-color: #04F5F9;
+            color: black;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .delete-button {
+            background-color: #31F904;
+            color: black;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .status-select {
+            margin-left: 10px;
+            padding: 5px;
+        }
+
+        .pending {
+            background-color: #D8F3CE;
+        }
+
+        .delivered {
+            background-color: #D0C53C;
+        }
     </style>
 </head>
 <body>
@@ -100,14 +132,29 @@
 
             sales.forEach((sale, index) => {
                 const row = document.createElement('tr');
+                row.className = sale.status === 'Pendiente' ? 'pending' : 'delivered';
                 row.innerHTML = `
                     <td>${sale.receiptDate}</td>
                     <td>${sale.name}</td>
                     <td>${sale.address}, ${sale.mainStreet}, ${sale.province}</td>
-                    <td><button onclick="printReceipt(${index})">Imprimir</button></td>
+                    <td>
+                        <button class="print-button" onclick="printReceipt(${index})">Imprimir</button>
+                        <button class="delete-button" onclick="deleteSale(${index})">Eliminar</button>
+                        <select class="status-select" onchange="updateStatus(${index}, this)">
+                            <option value="Pendiente" ${sale.status === 'Pendiente' ? 'selected' : ''}>Pendiente</option>
+                            <option value="Entregado" ${sale.status === 'Entregado' ? 'selected' : ''}>Entregado</option>
+                        </select>
+                    </td>
                 `;
                 salesTableBody.appendChild(row);
             });
+        }
+
+        function updateStatus(index, select) {
+            const sales = JSON.parse(localStorage.getItem('sales')) || [];
+            sales[index].status = select.value;
+            localStorage.setItem('sales', JSON.stringify(sales));
+            loadSales();
         }
 
         function printReceipt(index) {
@@ -172,6 +219,13 @@
             `);
             receiptWindow.document.close();
             receiptWindow.print();
+        }
+
+        function deleteSale(index) {
+            const sales = JSON.parse(localStorage.getItem('sales')) || [];
+            sales.splice(index, 1);
+            localStorage.setItem('sales', JSON.stringify(sales));
+            loadSales();
         }
 
         window.onload = loadSales;
