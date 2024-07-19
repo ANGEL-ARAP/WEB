@@ -5,22 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMPORTADORA JARMA - Tienda de Laptops</title>
     <style>
-        /* Estilos existentes */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #040506;
-            margin: 0;
-            padding: 0;
-        }
+	    body {
+    font-family: Arial, sans-serif;
+    background-image: url('profesionales.png'); /* Ruta relativa a la ubicación del archivo HTML */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
 
+        /* Estilos existentes */
         header {
-            background-color: #7BA742;
+            background-color: #9B1313;
             color: white;
-            padding: 19px;
+            padding: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
         }
+
 
         header img {
             max-width: 300px;
@@ -28,12 +32,12 @@
 
         header h1 {
             margin: 0;
-            font-size: 80px;
+            font-size: 54px;
         }
 
         .search-container {
             display: flex;
-            align-items: center;
+            align-items: auto;
         }
 
         .search-container input[type="text"] {
@@ -52,15 +56,18 @@
             border-radius: 4px;
         }
 
-        .search-container button:hover {
-            background-color: #f4f4f4;
+        .cart-icon {
+            position: relative;
+            margin-left: 20px; /* Ajusta la distancia desde el borde izquierdo */
+            cursor: pointer;
         }
+
 
         .cart-icon {
             position: relative;
-            margin-left: 10px;
+            margin-left: 20px; /* Ajusta la distancia desde el borde izquierdo */
             cursor: pointer;
-        }
+         }
 
         .cart-icon img {
             width: 40px;
@@ -78,6 +85,11 @@
             font-weight: bold;
         }
 
+        .login-icon {
+            margin-left: 100px; /* Ajusta la distancia desde el borde izquierdo */
+            cursor: pointer;
+			
+        }
         .sidebar {
             background-color: #fff;
             padding: 20px;
@@ -103,7 +115,7 @@
             margin: 10px 0;
         }
 		 .sidebar {
-            background-color: #C2ECA0;
+            background-color: #fff;
             padding: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             position: fixed;
@@ -114,7 +126,7 @@
         }
 
         .sidebar h2 {
-            font-size: 30px;
+            font-size: 18px;
             margin-top: 0;
         }
 
@@ -128,7 +140,7 @@
         }
 
         .sidebar ul li button {
-            background-color: #157376;
+            background-color: #0a0c08cc;
             color: white;
             border: none;
             padding: 10px;
@@ -141,10 +153,107 @@
         .sidebar ul li button:hover {
             background-color: #800f0f;
         }
+	
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1225118a;
+            color: white;
+            padding: 0.6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            max-width: 200px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 80px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input[type="text"] {
+            padding: 1px;
+            border: none;
+            border-radius: 1px;
+            margin-right: 1px;
+        }
+
+        .search-container button {
+            background-color: white;
+            color: #52312A;
+            border: none;
+            padding: 0px 20px;
+            cursor: pointer;
+            border-radius: 1px;
+        }
+
+        .search-container button:hover {
+            background-color: #f4f4f4;
+        }
+
+        .cart-icon {
+            position: relative;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            width: 31px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #fff;
+            color: #9B1313;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            background-color: #ffffff47;
+            padding: 5px;
+            box-shadow: 0 0 10px rgb(20 30 27);
+            position: fixed;
+            top: 200px;
+            left: 0;
+            width: 200px;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            font-size: 29px;
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
 
         .container {
-            margin-left: 230px;
-            padding: 30px;
+            margin-left: 20px;
+            padding: 20px;
         }
 
         .laptop-slider {
@@ -155,13 +264,13 @@
 
         .laptop-item {
             background-color: white;
-            padding: 90px;
-            min-width: 80px;
-            border-radius: 118px;
+            padding: 20px;
+            min-width: 20px;
+            border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
+            display: grid;
             flex-direction: column;
-            align-items: center;
+            align-items: end;
         }
 
         .laptop-item img {
@@ -171,7 +280,7 @@
 
         .laptop-item h2 {
             margin: 0;
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .laptop-item p {
@@ -179,15 +288,15 @@
         }
 
         .laptop-item .price {
-            color: #9B1313;
+            color: #122511;
             font-weight: bold;
         }
 
         .laptop-item button {
-            background-color: #9B1313;
+            background-color: #080808db;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 30px;
             cursor: pointer;
             border-radius: 4px;
             margin-top: 10px;
@@ -199,17 +308,17 @@
 
         .cart-container {
             display: none;
-            position: fixed;
+            position: relative;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            background-color: rgb(64 197 196 / 72%);
+            padding: 10px;
+            box-shadow: -1px 1px 0px 0px #1d94bb;
+            border-radius: 42px;
             width: 80%;
-            max-width: 600px;
-            z-index: 1000;
+            max-width: 1000px;
+            z-index: 700;
         }
 
         .cart-container h2 {
@@ -304,15 +413,15 @@
         }
 
         .back-button {
-            margin-top: 20px;
+            margin-top: 10px;
             display: block;
-            text-align: center;
+            text-align: LEFT;
         }
 
         .back-button a {
-            background-color: #9B1313;
+            background-color: #919139;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 100px;
             text-decoration: none;
             border-radius: 4px;
         }
@@ -320,40 +429,50 @@
         .back-button a:hover {
             background-color: #800f0f;
         }
+		
+        /* Estilos para el menú de variedades */
+        .variedades-menu {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .variedades-menu li {
+            margin-right: 20px;
+        }
+
+        .variedades-menu li:last-child {
+            margin-right: 0;
+        }
+
+        .variedades-menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
     </style>
 </head>
 
 <body>
-    <header>
-       <img src="Logo.png" alt="Logo de IMPORTADORA JARMA">
-        <h1> LAPTOPS - PROFESIONALES </h1>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Buscar laptops...">
-            <button type="button" onclick="searchLaptops()">Buscar</button>
-            <div class="cart-icon" onclick="toggleCart()">
-                <img src="logocarrito.jpg" alt="Carrito">
-                <span class="cart-count" id="cart-count">0</span>
-            </div>
-        </div>
-    </header>
-
-   <div class="sidebar">
-        <h2>CATEGORIAS</h2>
-        <ul>
-            <li><button type="button"><a href="GAMING.html" style="color: white; text-decoration: none;">Gaming</a></button></li>
-			<li><button type="button"><a href="PROFESIONAL.html" style="color: white; text-decoration: none;">Profesional</a></button></li>
-			<li><button type="button"><a href="ESTUDIANTES.html" style="color: white; text-decoration: none;">Estudiantes</a></button></li>
-			<li><button type="button"><a href="ESCRITORES.html" style="color: white; text-decoration: none;">Escritores</a></button></li>
-           </ul>
-        <h2>MARCAS</h2>
-        <ul>
-            <li><button type="button"><a href="HP.html" style="color: white; text-decoration: none;">HP</a></button></li>
-            <li><button type="button"><a href="DELL.html" style="color: white; text-decoration: none;">DELL</a></button></li>
-            <li><button type="button"><a href="ACER.html" style="color: white; text-decoration: none;">ACER</a></button></li>
-            <li><button type="button"><a href="ASUS.html" style="color: white; text-decoration: none;">ASUS</a></button></li>
+   <header>
+        <img src="Logo.png" alt="Logo JARMA">
+        <h1>PROFESIONAL</h1>
+        <ul class="variedades-menu">
+            <li><a href="GAMING.html">Gaming</a></li>
+            <li><a href="PROFESIONAL.html">Profesional</a></li>
+            <li><a href="ESTUDIANTES.html">Estudiantes </a></li>
+            <li><a href="ESCRITORES.html">Escritores</a></li>
         </ul>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder=" buscar Laptop...">
+        <button type="button" onclick="searchLaptops()">Buscar</button>
+        <div class="cart-icon" onclick="toggleCart()">
+            <img src="logocarrito.jpg" alt="Carrito">
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
     </div>
-
+</header>
     <div class="container">
         <div class="laptop-slider" id="laptop-slider">
             <!-- Laptops will be displayed here -->
@@ -375,77 +494,36 @@
     <script>
          let laptops = [
             {
-                name: 'HP DE NEGOCIOS',
-                description: 'HP Portátil de negocios 17, pantalla HD+ de 17.3", procesador Intel Core i3-1125G4 de 11ª generación, 32 GB de RAM, SSD de 1 TB, Wi-Fi, HDMI, cámara web, Windows 11 Pro, color plateado',
+                name: 'HP Portátil de negocios 17',
+                description: 'pantalla HD+ de 17.3", procesador Intel Core i3-1125G4 de 11ª generación, 32 GB de RAM, SSD de 1 TB, Wi-Fi, HDMI, cámara web, Windows 11 Pro, color plateado',
                 price: 503.99,
                 image: 'PROFESIONAL/PROFESIONAL.png'
             },
             {
-                name: 'HP EMPRESARIAL ',
-                description: 'HP Portátil portátil, pantalla táctil HD de 15.6", procesador Intel Core i3-1115G4, 32 GB de RAM, SSD PCIe de 1 TB, cámara web, tipo C, HDMI, lector de tarjetas SD, Wi-Fi, Windows 11 Home, color',
+                name: 'DELL portátil ',
+                description: 'Pantalla táctil HD de 15.6", procesador Intel Core i3-1115G4, 32 GB de RAM, SSD PCIe de 1 TB, cámara web, tipo C, HDMI, lector de tarjetas SD, Wi-Fi, Windows 11 Home, color',
                 price: 464.00,
                 image: 'PROFESIONAL/PROFESIONAL1.png'
             },
 			{
-                name: 'HP EMPRESARIAL ',
-                description: 'HP Laptop ultraligera de 14 pulgadas para estudiantes y negocios, Intel Quad-Core N4120, 8 GB de RAM, 192 GB de almacenamiento (64 GB eMMC + 128 GB Micro SD), 1 año Office 365, cámara web, HDMI, WiFi',
+                name: 'ASUS Laptop ultraligera ',
+                description: 'Pantalla de 14 pulgadas para estudiantes y negocios, Intel Quad-Core N4120, 8 GB de RAM, 192 GB de almacenamiento (64 GB eMMC + 128 GB Micro SD), 1 año Office 365, cámara web, HDMI, WiFi',
                 price: 289.00,
                 image: 'PROFESIONAL/PROFESIONAL2.png'
             },
 			{
-                name: 'HP EMPRESARIAL ',
+                name: 'ACER EMPRESARIAL ',
                 description: 'hp Laptop HD antirreflejo de 15.6", procesador Intel Quad-Core, 16 GB de RAM, 128 GB SSD+ 128 GB de almacenamiento USB JVQ, Office 365 1 año, hasta 11 horas de batería larga, Win11 S, rojo escarlata',
                 price: 329.00,
                 image: 'PROFESIONAL/PROFESIONAL3.png'
             },
 			{
-                name: 'HP EMPRESARIAL',
-                description: 'HP Laptop empresarial esencial FHD de 15.6 pulgadas, procesador Intel Core i5-1135G7, 32 GB de RAM, almacenamiento de 1 TB, gráficos Intel Iris Xe, lector de tarjetas SD, HDMI, Ethernet, cámara web,',
+                name: 'DELL EMPRESARIAL esencial FHD',
+                description: 'Pantalla de  15.6 pulgadas, procesador Intel Core i5-1135G7, 32 GB de RAM, almacenamiento de 1 TB, gráficos Intel Iris Xe, lector de tarjetas SD, HDMI, Ethernet, cámara web,',
                 price: 599.00,
                 image: 'PROFESIONAL/PROFESIONAL4.png'
             },
-			{
-                name: 'HP EMPRESARIA',
-                description: 'HP Computadora portátil empresarial, pantalla táctil HD de 15.6", procesador Intel Core i3-1115G4 (hasta 4.10 GHz), 16 GB de RAM, SSD de 1 TB, duración de la batería de 11 horas, Micro-Edge, pantalla',
-                price: 422.99,
-                image: 'PROFESIONAL/PROFESIONAL5.png'
-            },        
-		    {
-                name: 'HP EMPRESARIA',
-                description: 'HP Laptop empresarial G8 de 15.6", procesador Ryzen 5 5500 de 6 núcleos (hasta 4.0 GHz), memoria de 16 GB, SSD PCIe de 1 TB, pantalla FHD de 15.6 pulgadas, puerto Ethernet, lector de tarjetas SD',
-                price: 525.96,
-                image: 'PROFESIONAL/PROFESIONAL6.png'
-            },
-            {
-                name: 'Acer Chromebook ',
-                description: 'Acer Laptop Chromebook 315 2023, pantalla HD de 15.6 pulgadas, Intel Celeron N4020 (hasta 2.8 GHz), 4 GB de RAM, 64 GB eMMC, gráficos Intel UHD, batería',
-                price: 185.00,
-                image: 'ACER/ACER1.png'
-            },			
-			{
-                name: 'HP Laptop Chromebook',
-                description: 'HP Chromebook prémium de 15.6 HD, procesador Intel Celeron N de 3.7 GHz, velocidad turbo de 8 GB, SSD de 64 GB, WiFi ultrarrápido de hasta 1700 Mbps, Chrome OS, Arctic Sliver',
-                price: 1320.00,
-                image: 'HP/HP2.png'
-            },
-			{
-                name: 'ASUS Chromebook ',
-                description: 'ASUS C424MA-AS48F Chromebook C424, pantalla FHD NanoEdge de 14.0 pulgadas y 180 grados, procesador Intel Dual Core Celeron, RAM LPDDR4 de 4 GB, almacenamiento de 128 GB, color plateado, C424MA-AS48F',
-                price: 239.70,
-                image: 'ASUS/ASUS1.png'
-            },			
-			{
-                name: 'HP Laptop Chromebook',
-                description: 'HP Laptop Chromebook 14, Intel Celeron N4120, 4 GB de RAM, 64 GB eMMC, pantalla HD de 14 pulgadas, Chrome OS, diseño delgado, gráficos 4K, batería de larga duración, teclado gris ceniza ',
-                price: 199.96,
-                image: 'HP/HP3.png'
-            },
-			{
-                name: 'ASUS Chromebook ',
-                description: 'ASUS Laptop Chromebook Plus CX34 FHD de 14 pulgadas, Intel Core i3 1215U, 8 GB LPDDR5 RAM, SSD de 128 GB, gráficos Intel UHD, cámara de 1080p, WiFi 6, Bluetooth 5.2, Chrome OS, gris, tarjeta USB',
-                price: 369.00,
-                image: 'ASUS/ASUS3.png'
-            },			
+				
         ];
 
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
