@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura, ¿quieres ser mi novia?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #ff6666;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #yes {
+            background-color: #ff6666;
+            color: white;
+        }
+
+        #no {
+            background-color: #ccc;
+            color: black;
+        }
+
+        #message {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #ff6666;
+        }
+    </style>
+    <script>
+        function showYesMessage() {
+            const message = document.getElementById('message');
+            message.style.display = 'block';
+            message.innerHTML = '¡Sabía que ibas a decir que sí! ❤️';
+        }
+
+        function moveNoButton() {
+            const noButton = document.getElementById('no');
+            const randomX = Math.random() * 300 - 150;
+            const randomY = Math.random() * 300 - 150;
+            noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Laura, ¿quieres ser mi novia?</h1>
+        <p>Olvidemos el pasado y empecemos de nuevo. ¿Qué dices?</p>
+        <div class="buttons">
+            <button id="yes" onclick="showYesMessage()">Sí</button>
+            <button id="no" onmouseover="moveNoButton()">No</button>
+        </div>
+        <div id="message"></div>
+    </div>
+</body>
+</html>
