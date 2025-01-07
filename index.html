@@ -1,736 +1,94 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMPORTADORA JARMA - Tienda de Laptops</title>
+    <title>Laura, ¿quieres ser mi novia?</title>
     <style>
-	    body {
-    font-family: Arial, sans-serif;
-    background-image: url('fondo2.jpg'); /* Ruta relativa a la ubicación del archivo HTML */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
-}
-
-        /* Estilos existentes */
-        header {
-            background-color: #9B1313;
-            color: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-
-        header img {
-            max-width: 300px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 54px;
-        }
-
-        .search-container {
-            display: flex;
-            align-items: auto;
-        }
-
-        .search-container input[type="text"] {
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            margin-right: 10px;
-        }
-
-        .search-container button {
-            background-color: white;
-            color: #9B1313;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .cart-icon {
-            position: relative;
-            margin-left: 20px; /* Ajusta la distancia desde el borde izquierdo */
-            cursor: pointer;
-        }
-
-
-        .cart-icon {
-            position: relative;
-            margin-left: 20px; /* Ajusta la distancia desde el borde izquierdo */
-            cursor: pointer;
-         }
-
-        .cart-icon img {
-            width: 40px;
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: #fff;
-            color: #9B1313;
-            border-radius: 50%;
-            padding: 5px 10px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .login-icon {
-            margin-left: 100px; /* Ajusta la distancia desde el borde izquierdo */
-            cursor: pointer;
-			
-        }
-        .sidebar {
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 140px;
-            left: 0;
-            width: 200px;
-            height: 100%;
-        }
-
-        .sidebar h2 {
-            font-size: 18px;
-            margin-top: 0;
-        }
-
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin: 10px 0;
-        }
-		 .sidebar {
-            background-color: #fff;
-            padding: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 140px;
-            left: 0;
-            width: 200px;
-            height: 100%;
-        }
-
-        .sidebar h2 {
-            font-size: 18px;
-            margin-top: 0;
-        }
-
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin: 10px 0;
-        }
-
-        .sidebar ul li button {
-            background-color: #0a0c08cc;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            width: 100%;
-            text-align: left;
-        }
-
-        .sidebar ul li button:hover {
-            background-color: #800f0f;
-        }
-	
         body {
             font-family: Arial, sans-serif;
-            background-color: #ffffff;
+            text-align: center;
+            background-color: #ffe6e6;
             margin: 0;
             padding: 0;
-        }
-
-        header {
-            background-color: #1225118a;
-            color: white;
-            padding: 0.6px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-        }
-
-        header img {
-            max-width: 200px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 80px;
-        }
-
-        .search-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-container input[type="text"] {
-            padding: 1px;
-            border: none;
-            border-radius: 1px;
-            margin-right: 1px;
-        }
-
-        .search-container button {
-            background-color: white;
-            color: #52312A;
-            border: none;
-            padding: 0px 20px;
-            cursor: pointer;
-            border-radius: 1px;
-        }
-
-        .search-container button:hover {
-            background-color: #f4f4f4;
-        }
-
-        .cart-icon {
-            position: relative;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        .cart-icon img {
-            width: 31px;
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: #fff;
-            color: #9B1313;
-            border-radius: 50%;
-            padding: 5px 10px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .sidebar {
-            background-color: #ffffff47;
-            padding: 5px;
-            box-shadow: 0 0 10px rgb(20 30 27);
-            position: fixed;
-            top: 200px;
-            left: 0;
-            width: 200px;
-            height: 100%;
-        }
-
-        .sidebar h2 {
-            font-size: 29px;
-            margin-top: 0;
-        }
-
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin: 10px 0;
+            height: 100vh;
         }
 
         .container {
-            margin-left: 20px;
+            background: white;
             padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .laptop-slider {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
+        h1 {
+            color: #ff6666;
         }
 
-        .laptop-item {
-            background-color: white;
-            padding: 20px;
-            min-width: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: grid;
-            flex-direction: column;
-            align-items: end;
-        }
-
-        .laptop-item img {
-            max-width: 150px;
-            margin-bottom: 20px;
-        }
-
-        .laptop-item h2 {
-            margin: 0;
-            font-size: 20px;
-        }
-
-        .laptop-item p {
-            margin: 5px 0;
-        }
-
-        .laptop-item .price {
-            color: #122511;
-            font-weight: bold;
-        }
-
-        .laptop-item button {
-            background-color: #080808db;
-            color: white;
-            border: none;
-            padding: 10px 30px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-
-        .laptop-item button:hover {
-            background-color: #800f0f;
-        }
-
-        .cart-container {
-            display: none;
-            position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgb(229 247 247);
-            padding: 10px;
-            box-shadow: -1px 1px 0px 0px #1d94bb;
-            border-radius: 42px;
-            width: 80%;
-            max-width: 1000px;
-            z-index: 700;
-        }
-
-        .cart-container h2 {
-            margin-top: 0;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .cart-item img {
-            max-width: 100px;
-            margin-right: 20px;
-        }
-
-        .cart-item h3 {
-            margin: 0;
+        p {
             font-size: 18px;
+            color: #333;
         }
 
-        .cart-item p {
-            margin: 5px 0;
-        }
-
-        .cart-item .price {
-            color: #9B1313;
-            font-weight: bold;
-        }
-
-        .cart-item .quantity-control {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .cart-item .quantity-control button {
-            background-color: #9B1313;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin: 0 5px;
-        }
-
-        .cart-item .quantity-control button:hover {
-            background-color: #800f0f;
-        }
-
-        .cart-item .quantity {
-            font-size: 18px;
-        }
-
-        .cart-item .remove-button {
-            background-color: #ff4c4c;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-left: 20px;
-        }
-
-        .cart-item .remove-button:hover {
-            background-color: #e43e3e;
-        }
-
-        .cart-footer {
-            text-align: right;
-            font-size: 18px;
+        .buttons {
             margin-top: 20px;
         }
 
-        .cart-footer .subtotal {
-            font-weight: bold;
-        }
-
-        .cart-footer button {
-            background-color: #9B1313;
-            color: white;
-            border: none;
+        button {
+            font-size: 18px;
             padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 10px;
             cursor: pointer;
-            border-radius: 4px;
-            margin-top: 10px;
+            transition: transform 0.2s;
         }
 
-        .cart-footer button:hover {
-            background-color: #800f0f;
-        }
-
-        .back-button {
-            margin-top: 10px;
-            display: block;
-            text-align: LEFT;
-        }
-
-        .back-button a {
-            background-color: #122511;
+        #yes {
+            background-color: #ff6666;
             color: white;
-            padding: 5px 100px;
-            text-decoration: none;
-            border-radius: 4px;
         }
 
-        .back-button a:hover {
-            background-color: #800f0f;
-        }
-		
-        /* Estilos para el menú de variedades */
-        .variedades-menu {
-            display: flex;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+        #no {
+            background-color: #ccc;
+            color: black;
         }
 
-        .variedades-menu li {
-            margin-right: 20px;
-        }
-
-        .variedades-menu li:last-child {
-            margin-right: 0;
-        }
-
-        .variedades-menu li a {
-            color: white;
-            text-decoration: none;
+        #message {
+            display: none;
+            margin-top: 20px;
             font-size: 20px;
+            color: #ff6666;
         }
     </style>
-</head>
-
-<body>
-    <header>
-        <img src="Logo.png" alt="Logo JARMA">
-        <h1>JARMA</h1>
-        <ul class="variedades-menu">
-            <li><a href="GAMING.html">Gaming</a></li>
-            <li><a href="PROFESIONAL.html">Profesional</a></li>
-            <li><a href="ESTUDIANTES.html">Estudiantes </a></li>
-            <li><a href="ESCRITORES.html">Escritores</a></li>
-        </ul>
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder=" buscar Laptop...">
-        <button type="button" onclick="searchLaptops()">Buscar</button>
-        <div class="cart-icon" onclick="toggleCart()">
-            <img src="logocarrito.jpg" alt="Carrito">
-            <span class="cart-count" id="cart-count">0</span>
-        </div>
-    </div>
-</header>
-
-    <div class="container">
-        <div class="laptop-slider" id="laptop-slider">
-            <div class="laptop-item">
-                <img src="HP/HP5.png" alt="Laptop 2">
-                <h2>HP Laptop Chromebook</h2>
-                <p> </p>
-                <p class="price">$279.99</p>
-                <button onclick="mostrarMensaje()">Agregar al carrito</button>
-			</div>
-			<div class="laptop-item">
-                <img src="PROFESIONAL/PROFESIONAL.png" alt="Laptop 2">
-                <h2>ASUS Portátil</h2>
-                <p> </p>
-                <p class="price">$350.00</p>
-                <button type="button" onclick="addToCart('ASUS Portátil', 'Portátil 17P, pantalla HD+ de 17.3", procesador Intel Core i3-1125G4 de 11ª generación, 32 GB de RAM, SSD de 1 TB, 'C:/xampp/htdocs/proyecto/ASUS/ASUS1.jpg')">Agregar al Carrito</button>
-            </div>
-			<div class="laptop-item">
-                <img src="ACER/ACER2.png" alt="Laptop 2">
-                <h2>Acer Aspire 3 A315-24P-R7VH</h2>
-                <p> </p>
-                <p class="price">$140.00</p>
-                <button type="button" onclick="addToCart('Acer Aspire 3 A315-24P-R7VH', ' pantalla IPS Full HD de 15.6 pulgadas, procesador AMD Ryzen 3 7320U de cuatro núcleos, gráficos AMD Radeon, 8 GB LPDDR5, SSD NVMe de 128 GB, Wi-Fi 6.', 140.00, 'ACER/ACER2.png)">Agregar al Carrito</button>
-            </div>
-            <div class="laptop-item">
-                <img src="HP/HP6.png" alt="Laptop 2">
-                <h2>DELL insignia</h2>
-                <p> </p>
-                <p class="price">$155.00</p>
-                <button type="button" onclick="addToCart('HP Chromebook', 'DELL insignia más reciente, pantalla HD de 11.6 pulgadas (1366 x 768), procesador Intel Celeron N3350, 4 GB LPDDR2,', 155.00, 'HP/HP6.png)">Agregar al Carrito</button>
-            </div>
-            <div class="laptop-item">
-                <img src="ASUS/ASUS3.png" alt="Laptop 2">
-                <h2>ASUS Plus CX34</h2>
-                <p> </p>
-                <p class="price">$350.00</p>
-                <button type="button" onclick="addToCart('ASUS Chromebook', 'ASUS Laptop Chromebook Plus CX34 FHD de 14 pulgadas, Intel Core i3 1215U, 8 GB LPDDR5 RAM, SSD de 128 GB, gráficos Intel UHD, cámara de 1080p, WiFi 6, Bluetooth 5.2, Chrome OS, gris, tarjeta USB.', 350.00, 'ASUS/ASUS3.png')">Agregar al Carrito</button>
-            </div>
-        </div>
-    </div>
-    <div class="cart-container" id="cart-container">
-        <h2>Carrito de Compras</h2>
-        <div id="cart-items"></div>
-        <div class="cart-footer">
-            <p class="subtotal">Subtotal: $<span id="cart-subtotal">0.00</span></p>
-            <button type="button" onclick="proceedToCheckout()">Proceder al Pago</button>
-        </div>
-    </div>
-
     <script>
-        let laptops = [
-            {
-                title: 'ACER ASPIRE',
-                description: 'ACER ASPIRE 5 14 Intel Core I5-1335U 8gb RAM 512gb SSD 14″ WUXGA W11.',
-                price: 565.00,
-                image: 'ACER/ACER1.png'
-            },
-            {
-                title: 'DELL INSPIRON',
-                description: 'DELL INSPIRON 15 Intel Core I7-1165G7 16gb RAM 1TB SSD 15.6″ Full HD W11.',
-                price: 750.00,
-                image: 'GAMING/GAMING9.png'
-            },
-			{
-                title: 'HP ASPIRE',
-                description: 'ACER ASPIRE 5 14 Intel Core I5-1335U 8gb RAM 512gb SSD 14″ WUXGA W11.',
-                price: 565.00,
-                image: 'GAMING/GAMING7.png'
-            },
-			            {
-                title: 'Chromebook HP ',
-                description: 'Computadora portátil Chromebook HD de 14 pulgadas con pantalla táctil (Intel Celeron N3350 hasta 2.4 GHz, 4 GB de RAM, memoria flash de 32 GB, WiFi"',
-                price: 199.00,
-                image: 'HP/HP.png'
-            },
-			{
-                title: 'Dell Chromebook 11',
-                description: 'Dell Chromebook 11 3100 - Chromebook 2 en 1 con pantalla táctil de 11.6 pulgadas, HD, 1366 x 768, Intel Celeron N4020 de doble núcleo "2 núcleos", 4 GB de RAM, memoria flash de 32 GB "renovada"',
-                price: 99.99,
-                image: 'DELL/DELL1.png'
-            },			
-            {
-                title: 'HP Laptop Chromebook',
-                description: 'Pantalla de 14 pulgadas Procesador Intel Celeron N4120  8 GB de RAM  128 GB eMMC  Gráficos Intel UHD 600  WiFi  Bluetooth  Teclado',
-                price: 239.95,
-                image: 'HP/HP1.png'
-            },
-            {
-                title: 'Acer Chromebook ',
-                description: 'Acer Laptop Chromebook 315 2023, pantalla HD de 15.6 pulgadas, Intel Celeron N4020 (hasta 2.8 GHz), 4 GB de RAM, 64 GB eMMC, gráficos Intel UHD, batería',
-                price: 185.00,
-                image: 'ACER/ACER1.png'
-            },			
-			{
-                title: 'HP Laptop Chromebook',
-                description: 'HP Chromebook prémium de 15.6 HD, procesador Intel Celeron N de 3.7 GHz, velocidad turbo de 8 GB, SSD de 64 GB, WiFi ultrarrápido de hasta 1700 Mbps, Chrome OS, Arctic Sliver',
-                price: 1320.00,
-                image: 'HP/HP2.png'
-            },
-			{
-                title: 'ASUS Chromebook ',
-                description: 'ASUS C424MA-AS48F Chromebook C424, pantalla FHD NanoEdge de 14.0 pulgadas y 180 grados, procesador Intel Dual Core Celeron, RAM LPDDR4 de 4 GB, almacenamiento de 128 GB, color plateado, C424MA-AS48F',
-                price: 239.70,
-                image: 'ASUS/ASUS1.png'
-            },			
-			{
-                title: 'HP Laptop Chromebook',
-                description: 'HP Laptop Chromebook 14, Intel Celeron N4120, 4 GB de RAM, 64 GB eMMC, pantalla HD de 14 pulgadas, Chrome OS, diseño delgado, gráficos 4K, batería de larga duración, teclado gris ceniza ',
-                price: 199.96,
-                image: 'HP/HP3.png'
-            },
-			{
-                title: 'ASUS Chromebook ',
-                description: 'ASUS Laptop Chromebook Plus CX34 FHD de 14 pulgadas, Intel Core i3 1215U, 8 GB LPDDR5 RAM, SSD de 128 GB, gráficos Intel UHD, cámara de 1080p, WiFi 6, Bluetooth 5.2, Chrome OS, gris, tarjeta USB',
-                price: 369.00,
-                image: 'ASUS/ASUS3.png'
-            },			
-			{
-                title: 'HP Chromebook ',
-                description: 'HP Chromebook 15 HD de 15.6 pulgadas (Intel Pentium N6000, 8 GB de RAM, 128 GB de almacenamiento (64 GB eMMc + tarjeta SD de 64 GB), gráficos UHD, KB numérico, portátil para el investigadores o escritores ',
-                price: 299.98,
-                image: 'HP/HP4.png'
-            },
-			{
-                title: 'HP Laptop Chromebook ',
-                description: 'HP Laptop Chromebook de 14 pulgadas para estudiantes y negocios, laptop Chromebook HD, Intel Celeron N4120, 16 GB de RAM, 192 GB de almacenamiento, 64 GB eMMC+5ave 128 GB de memoria flash, Wi-Fi',
-                price: 279.99,
-                image: 'HP/HP5.png'
-            },
-			{
-                title: 'Acer Aspire 3 Chromebook ',
-                description: 'Acer Aspire 3 A315-24P-R7VH - Laptop delgada, pantalla IPS Full HD de 15.6 pulgadas, procesador AMD Ryzen 3 7320U de cuatro núcleos, gráficos AMD Radeon, 8 GB LPDDR5, SSD NVMe de 128 GB, Wi-Fi 6',
-                price: 299.99,
-                image: 'ACER/ACER2.png'
-            },        
-		    {
-                title: 'HP Chromebook ',
-                description: 'HP Chromebook insignia más reciente, pantalla HD de 11.6 pulgadas (1366 x 768), procesador Intel Celeron N3350, 4 GB LPDDR2, 32 GB eMMC, Chrome OS, HD Graphics 500, 11A-NB0013DX, gris ceniza',
-                price: 185.00,
-                image: 'HP/HP6.png'
-            },					
-            // Agrega más laptops aquí
-        ];
-
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        updateCartCount();
-
-        function addToCart(title, description, price, image) {
-            const item = { title, description, price, image, quantity: 1 };
-            const existingItemIndex = cart.findIndex(i => i.title === item.title);
-            if (existingItemIndex !== -1) {
-                cart[existingItemIndex].quantity += 1;
-            } else {
-                cart.push(item);
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
+        function showYesMessage() {
+            const message = document.getElementById('message');
+            message.style.display = 'block';
+            message.innerHTML = '¡Sabía que ibas a decir que sí! ❤️';
         }
 
-        function updateCartCount() {
-            const cartCount = document.getElementById('cart-count');
-            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-        }
-
-        function toggleCart() {
-            const cartContainer = document.getElementById('cart-container');
-            cartContainer.style.display = cartContainer.style.display === 'block' ? 'none' : 'block';
-            displayCartItems();
-        }
-		        function mostrarMensaje() {
-            alert("NO EXITE STOCK DISPONIBLE");
-        }
-
-        function displayCartItems() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            cartItemsContainer.innerHTML = '';
-            let subtotal = 0;
-
-            cart.forEach(item => {
-                subtotal += item.price * item.quantity;
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-
-                cartItem.innerHTML = `
-                    <img src="${item.image}" alt="${item.title}">
-                    <div>
-                        <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                        <p class="price">$${item.price.toFixed(2)}</p>
-                        <div class="quantity-control">
-                            <button onclick="updateQuantity('${item.title}', -1)">-</button>
-                            <span class="quantity">${item.quantity}</span>
-                            <button onclick="updateQuantity('${item.title}', 1)">+</button>
-                        </div>
-                        <button class="remove-button" onclick="removeFromCart('${item.title}')">Eliminar</button>
-                    </div>
-                `;
-
-                cartItemsContainer.appendChild(cartItem);
-            });
-
-            const cartSubtotal = document.getElementById('cart-subtotal');
-            cartSubtotal.textContent = subtotal.toFixed(2);
-        }
-
-        function updateQuantity(title, change) {
-            const itemIndex = cart.findIndex(i => i.title === title);
-            if (itemIndex !== -1) {
-                cart[itemIndex].quantity += change;
-                if (cart[itemIndex].quantity <= 0) {
-                    cart.splice(itemIndex, 1);
-                }
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateCartCount();
-                displayCartItems();
-            }
-        }
-
-        function removeFromCart(title) {
-            cart = cart.filter(item => item.title !== title);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            displayCartItems();
-        }
-        function mostrarMensajeExito() {
-            var mensaje = document.getElementById('success-message');
-            mensaje.style.display = 'block';
-            setTimeout(function() {
-                mensaje.style.display = 'none';
-            }, 2000);
-        }
-
-        function proceedToCheckout() {
-            window.location.href = 'checkout.html';
-        }
-
-        function searchLaptops() {
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
-            const filteredLaptops = laptops.filter(laptop => laptop.title.toLowerCase().includes(searchTerm));
-
-            const laptopSlider = document.getElementById('laptop-slider');
-            laptopSlider.innerHTML = '';
-
-            filteredLaptops.forEach(laptop => {
-                const laptopItem = document.createElement('div');
-                laptopItem.className = 'laptop-item';
-
-                laptopItem.innerHTML = `
-                    <img src="${laptop.image}" alt="${laptop.title}">
-                    <h2>${laptop.title}</h2>
-                    <p>${laptop.description}</p>
-                    <p class="price">$${laptop.price.toFixed(2)}</p>
-                    <button type="button" onclick="addToCart('${laptop.title}', '${laptop.description}', ${laptop.price}, '${laptop.image}')">Agregar al Carrito</button>
-                `;
-
-                laptopSlider.appendChild(laptopItem);
-            });
+        function moveNoButton() {
+            const noButton = document.getElementById('no');
+            const randomX = Math.random() * 300 - 150;
+            const randomY = Math.random() * 300 - 150;
+            noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
         }
     </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Laura, ¿quieres ser mi novia?</h1>
+        <p>Olvidemos el pasado y empecemos de nuevo. ¿Qué dices?</p>
+        <div class="buttons">
+            <button id="yes" onclick="showYesMessage()">Sí</button>
+            <button id="no" onmouseover="moveNoButton()">No</button>
+        </div>
+        <div id="message"></div>
+    </div>
 </body>
 </html>
